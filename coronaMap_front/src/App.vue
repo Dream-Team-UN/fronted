@@ -2,7 +2,7 @@
   <div id="app">
     <header>
   <nav>
-    <a class="brand">CORONAMAP</a>
+    <img src="./assets/logo.png" alt="CornoamapTitle" style="width:135px;height:60px;">
     <router-link class="menu-item" to="/">Inicio</router-link>
     <router-link class="menu-item" to="/mapa">Mapa De Infectados</router-link>
     <router-link class="menu-item" to="/comportamiento">Comportamiento COVID-19</router-link>
