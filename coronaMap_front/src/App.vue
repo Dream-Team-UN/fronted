@@ -32,10 +32,8 @@ export default {
 
 body{
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  background-image:url('./assets/bg4.jpg');
+  background-image:url('./assets/BG.jpg');
   background-position:inherit
-  /*background-size:center;
-  background-color: #89beb3;*/
 }
 
 header{
