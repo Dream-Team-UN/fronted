@@ -47,10 +47,9 @@ export default {
         background-color: #e4e3e3;
         border-style: solid;
         border-width: 2px;
-        border-color: #84a9ac;
+        border-color: #212121;
     }
         #filtrosTitulo {
-            font-family: cursive;
             font-size: 60px;
             text-align: center;
             position: relative;
@@ -90,7 +89,7 @@ export default {
         background-color: #e4e3e3;
         border-style: solid;
         border-width: 2px;
-        border-color: #84a9ac;
+        border-color: #212121;
     }
         .mapaTemporal {
             height: 660px;
@@ -109,10 +108,10 @@ export default {
         background-color: #e4e3e3;
         border-style: solid;
         border-width: 2px;
-        border-color: #84a9ac;
+        border-color: #212121;
     }
         .dataTitulo {
-            font-family: cursive;
+        
             font-size: 20px;
             text-align: center;
             position: relative;
@@ -120,12 +119,12 @@ export default {
             color: #204051;
         }
         .dataContent {
-            font-family: cursive;
+        
             font-size: 50px;
             text-align: center;
             position: relative;
             top: 25px;
-            color: #000000;
+            color: #204051;
         }
         .sqrConfirmados {
             height: 150px;
@@ -167,6 +166,6 @@ export default {
         left: 260px;
         border-style: solid;
         border-width: 4px;
-        border-color: #84a9ac;
+        border-color: #212121;
     }
 </style>
