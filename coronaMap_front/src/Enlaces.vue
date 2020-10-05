@@ -1,5 +1,6 @@
 <template>
     <div>
+        <br><br>
         <h1 class="titulo">Enlaces externos</h1>
         <br><br><br><br>
         <div class="container">
@@ -37,7 +38,7 @@ export default {
 .titulo{
     text-align: center;
     font-size: 40px;
-    color: black;
+    color: #212121;
     margin-top: 100;
 }
 
