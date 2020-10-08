@@ -43,12 +43,12 @@ body{
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   /*background-image:url('./assets/BG.jpg');
   background-position:inherit*/
-  background-color: #0d7377;
+  background-color: #a3d8f4;
 }
 
 header{
   width: 100vw;
-  background-color: #212121;
+  background-color: #7579e7;
   padding: 15px;
 }
 
@@ -80,8 +80,8 @@ nav .menu-item{
 
 nav .menu-item.active,
 nav .menu-item:hover{
-  background-color: #a6a6a4;
-  border-bottom-color:#32e0c4;
+  background-color: #9ab3f5;
+  border-bottom-color:#a3d8f4;
 }
 nav .menu-item a{
   color: inherit;
@@ -91,7 +91,7 @@ footer{
  position:fixed;
  bottom:0;
  width: 100%;
- background-color: #212121;
+ background-color: #7579e7;
  padding: 15px;
 }
 footer .informacion{

@@ -1,5 +1,28 @@
 <template>
     <div>
+        <h3>Informacion de backend</h3>
+        <div class="container"  v-for="caso in casos" v-bind:key="caso.id">
+            <!--<table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Casos Fallecidos</th>
+                        <th>Casos Recuperados</th>
+                        <th>Casos Totales</th>
+                        <th>casos Actuales</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="caso in casos" v-bind:key="caso.id">
+                        <td>{{caso.id}}</td>
+                        <td>{{caso.casosFal}}</td>
+                        <td>{{caso.casosRec}}</td>
+                        <td>{{caso.casosTol}}</td>
+                        <td>{{caso.casosAct}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>-->
         <div class="sqrFiltros">
             <h1 id="filtrosTitulo">Filtros</h1>
             <div class="sqrDepartamento"></div>
@@ -12,32 +35,60 @@
         <div class="sqrDatos">
             <div class="sqrConfirmados">
                 <h1 class="dataTitulo">Casos Confirmados</h1>
-                <div class="dataContent">1111</div>
+                <div class="dataContent">{{caso.casosTol}}</div>
             </div>
             <div class="sqrActivos">
                 <h1 class="dataTitulo">Casos Activos</h1>
-                <div class="dataContent">2222</div>
+                <div class="dataContent">{{caso.casosAct}}</div>
             </div>
             <div class="sqrRecuperados">
                 <h1 class="dataTitulo">Recuperados</h1>
-                <div class="dataContent">3333</div>
+                <div class="dataContent">{{caso.casosRec}}</div>
             </div>
             <div class="sqrFallecidos">
                 <h1 class="dataTitulo">Fallecidos</h1>
-                <div class="dataContent">4444</div>
+                <div class="dataContent">{{caso.casosFal}}</div>
             </div>
         </div>
         <div class="sqrBigBorder"></div>
     </div>
+    </div>
 </template>
 
 <script>
+import CasosService from './services/CasosService';
 export default {
-    
-}
+    name:"Casos",
+    data(){
+        return{
+            casos:[],
+            DATA: "data1"
+        };
+    },
+    methods:{
+        refreshData(){
+            CasosService.devolverCasos(this.DATA).then(response=>{
+                console.log(response.data);
+                this.casos = response.data;
+                //console.log("algo");
+            });
+        }
+    },
+    created(){
+        this.refreshData();
+    }    
+};
 </script>
 
 <style>
+    table {
+        width: 80%;
+    }
+    th, td {
+        width: 25%;
+        text-align: left;
+        vertical-align: top;
+    }
     .sqrFiltros {
         height: 680px;
         width: 300px;

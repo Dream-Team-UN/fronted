@@ -61,7 +61,7 @@ export default {
     margin: 20px;
     text-align: center;
     transition: all 0.25s;
-    background-color: #212121;
+    background-color: #7579e7;
     }
 
 .container .card:hover{
@@ -75,7 +75,7 @@ export default {
 }
 .container .card h4{
     font-weight: 600;
-    color:#32e0c4;
+    color:##212121;
 }
 .container .card p{
     padding: 0 1rem;
@@ -87,6 +87,6 @@ export default {
 .container .card a{
     font-weight: 500;
     text-decoration: none;
-    color: #3498d3;
+    color: #212121;
 }   
 </style>
