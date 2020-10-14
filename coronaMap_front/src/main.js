@@ -5,6 +5,7 @@ import Inicio from './Inicio.vue'
 import Mapa from './Mapa.vue'
 import Comportamiento from './Comportamiento.vue'
 import Enlaces from './Enlaces.vue'
+import * as VueGoogleMaps from "vue2-google-maps";
 
 Vue.use(VueRouter);
 
@@ -18,6 +19,14 @@ const routes=[
 const router=new VueRouter({
   routes
 });
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: "AIzaSyCUKpHZmqH_-Qob7h_ZlzJJmgYxqudTs-M",
+    libraries: "places" // necessary for places input
+  }
+});
+
 new Vue({
   el: '#app',
   router,

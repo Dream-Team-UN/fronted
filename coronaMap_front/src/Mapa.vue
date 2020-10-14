@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>Informacion de backend</h3>
-        <div class="container"  v-for="caso in casos" v-bind:key="caso.id">
+        <div class="container">
             <!--<table class="table">
                 <thead>
                     <tr>
@@ -30,24 +30,29 @@
             <div class="sqrFiltrosReset"></div>
         </div>
         <div class="sqrMapa">
-            <div class="mapaTemporal"></div>
+            <!--<div class="mapaTemporal"></div>-->
+            <div id="app"><google-map /></div>
         </div>
         <div class="sqrDatos">
             <div class="sqrConfirmados">
                 <h1 class="dataTitulo">Casos Confirmados</h1>
-                <div class="dataContent">{{caso.casosTol}}</div>
+                <!--<div class="dataContent">{{caso.casosTol}}</div>-->
+                <div class="dataContent">1111</div>
             </div>
             <div class="sqrActivos">
                 <h1 class="dataTitulo">Casos Activos</h1>
-                <div class="dataContent">{{caso.casosAct}}</div>
+                <!--<div class="dataContent">{{caso.casosAct}}</div>-->
+                <div class="dataContent">2222</div>
             </div>
             <div class="sqrRecuperados">
                 <h1 class="dataTitulo">Recuperados</h1>
-                <div class="dataContent">{{caso.casosRec}}</div>
+                <!--<div class="dataContent">{{caso.casosRec}}</div>-->
+                <div class="dataContent">3333</div>
             </div>
             <div class="sqrFallecidos">
                 <h1 class="dataTitulo">Fallecidos</h1>
-                <div class="dataContent">{{caso.casosFal}}</div>
+                <!--<div class="dataContent">{{caso.casosFal}}</div>-->
+                <div class="dataContent">4444</div>
             </div>
         </div>
         <div class="sqrBigBorder"></div>
@@ -56,28 +61,32 @@
 </template>
 
 <script>
-import CasosService from './services/CasosService';
-export default {
-    name:"Casos",
-    data(){
-        return{
-            casos:[],
-            DATA: "data1"
-        };
-    },
-    methods:{
-        refreshData(){
-            CasosService.devolverCasos(this.DATA).then(response=>{
-                console.log(response.data);
-                this.casos = response.data;
-                //console.log("algo");
-            });
+    import GoogleMap from "./GoogleMap";
+    import CasosService from './services/CasosService';
+    export default {
+        name:"Casos",
+        data(){
+            return{
+                casos:[],
+                DATA: "data1"
+            };
+        },
+        components: {
+            GoogleMap
+        },
+        methods:{
+            refreshData(){
+                CasosService.devolverCasos(this.DATA).then(response=>{
+                    console.log(response.data);
+                    this.casos = response.data;
+                    //console.log("algo");
+                });
+            }
+        },
+        created(){
+            this.refreshData();
         }
-    },
-    created(){
-        this.refreshData();
-    }    
-};
+    };
 </script>
 
 <style>
@@ -150,6 +159,9 @@ export default {
             left: 10px;
             background-image: url('./assets/Colombia.png');
         }
+
+        
+
     .sqrDatos {
         height: 680px;
         width: 300px;
