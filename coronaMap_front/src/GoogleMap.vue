@@ -13,7 +13,7 @@
     </div>-->
     <gmap-map
       :center="center"
-      :zoom="10"
+      :zoom="7"
       style="width:100%;  height: 675px;"
     >
       <gmap-marker
@@ -31,8 +31,8 @@ export default {
   name: "GoogleMap",
   data() {
     return {
-      // default to Montreal to keep it simple
-      center: { lat: 45.508, lng: -73.587 },
+      // Coordenadas de Amazonas (Temporales)
+      center: { lat: -2.0558744, lng: -73.0119454 },
       markers: [],
       places: [],
       currentPlace: null
@@ -40,7 +40,8 @@ export default {
   },
 
   mounted() {
-    this.geolocate();
+    // Función para centrar el mapa en la ubicación del usuario:
+    // this.geolocate();
   },
 
   methods: {
