@@ -85,6 +85,7 @@
             </div>           
         <div class="contenedor_centro">
             <!--<h1>Mapa</h1>-->
+            <!--<div id="map"><google-map :lati="LAT" :longi="LONG" /></div>-->
             <div id="map"><google-map :lati="LAT" :longi="LONG" /></div>
         </div>
         <div class="contenedor_derecha" v-for="caso in casos" v-bind:key="caso.id">

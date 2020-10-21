@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Carousel3d from 'vue-carousel-3d';
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import Inicio from './Inicio.vue'
@@ -8,6 +9,7 @@ import Enlaces from './Enlaces.vue'
 import * as VueGoogleMaps from "vue2-google-maps";
 
 Vue.use(VueRouter);
+Vue.use(Carousel3d);
 
 const routes=[
   {path:'/', component: Inicio},

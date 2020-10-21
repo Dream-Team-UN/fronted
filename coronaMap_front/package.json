@@ -13,6 +13,7 @@
     "axios": "^0.20.0",
     "epic-spinners": "^1.1.0",
     "vue": "^2.5.11",
+    "vue-carousel-3d": "^1.0.1",
     "vue-router": "^3.4.5",
     "vue2-google-maps": "^0.10.7"
   },

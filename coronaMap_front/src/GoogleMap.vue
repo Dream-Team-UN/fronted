@@ -10,9 +10,9 @@
       </label>
       <br/>
 
-    </div v-on:click="funcionPrueba">-->
+    </div>-->
     <gmap-map v-on:click="funcionPrueba"
-      :center="center"
+      :center="{ lat: this.lati, lng: this.longi}"
       :zoom="10"
       style="width:100%;  height: 675px;"
     >
@@ -23,6 +23,7 @@
         @click="center=m.position"
       ></gmap-marker>
     </gmap-map>
+   
   </div>
 </template>
 
@@ -31,12 +32,12 @@ export default {
   name: "GoogleMap",
  props: {
     lati: Number,
-    longi: String
+    longi: Number
   },
   data() {
     return {
       // Coordenadas de Colombia (default)
-      center: { lat: 4.6420147, lng: -78.8461639 },
+      //center: { lat: 4.6420147, lng: -78.8461639},
       markers: [],
       places: [],
       currentPlace: null,
@@ -46,8 +47,8 @@ export default {
 
   mounted() {
     // Función para centrar el mapa en la ubicación dada usuario:
-    this.geolocate();
-    console.log("latitud "+this.lati+"longitud "+this.longi)
+    //this.geolocate();
+    //console.log("latitud "+this.lati+"longitud "+this.longi)
   },
 
   methods: {
@@ -79,11 +80,19 @@ export default {
         };
       });
     },*/
-    geolocate() {
+    /*if (navigator.geolocation) { 
+  navigator.geolocation.getCurrentPosition (getPosition); 
+}
+function getPosition (position) { 
+  console.log (position.coords.latitude, position.coords.longitude); 
+}*/ 
+    geolocate: function() {
+        navigator.geolocation.getCurrentPosition(position => {
         this.center = {
           lat: this.lati,
           lng: this.longi
-        };    
+        };
+      }); 
     }
   }
 };
