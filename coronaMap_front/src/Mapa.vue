@@ -1,7 +1,7 @@
 <template>
     <div id="body">
         <h1>Mapa</h1>
-        <!--<table class="table">
+       <!--<table class="table">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -26,41 +26,41 @@
                 <h1 id="filtrosTitulo">Filtros</h1>
                 <div class="sqrDepartamento">
                     <h3>Filtrar por Departamento:</h3>
-                    <select class="listaDep">
-                        <option>Selecciona un Departamento</option>
-                        <option>AMAZONAS</option>
-                        <option>ANTIOQUIA</option>
-                        <option>ARAUCA</option>
-                        <option>ATLÁNTICO</option>
-                        <option>BOLÍVAR</option>
-                        <option>BOYACÁ</option>
-                        <option>CALDAS</option>
-                        <option>CAQUETÁ</option>
-                        <option>CASANARE</option>
-                        <option>CAUCA</option>
-                        <option>CESAR</option>
-                        <option>CHOCÓ</option>
-                        <option>CÓRDOBA</option>
-                        <option>CUNDINAMARCA</option>
-                        <option>DISTRITO CAPITAL</option>
-                        <option>GUAINÍA</option>
-                        <option>GUAVIARE</option>
-                        <option>HUILA</option>
-                        <option>LA GUAJIRA</option>
-                        <option>MAGDALENA</option>
-                        <option>META</option>
-                        <option>NARIÑO</option>
-                        <option>NORTE DE SANTANDER</option>
-                        <option>PUTUMAYO</option>
-                        <option>QUINDÍO</option>
-                        <option>RISARALDA</option>
-                        <option>SAN ANDRÉS Y PROVIDENCIA</option>
-                        <option>SANTANDER</option>
-                        <option>SUCRE</option>
-                        <option>TOLIMA</option>
-                        <option>VALLE</option>
-                        <option>VAUPÉS</option>
-                        <option>VICHADA</option>
+                    <select class="listaDep" v-on:change="refreshDataDptos($event)">
+                        <option value="0">Seleccione un Departamento</option>
+                        <option value="91">Amazonas</option>
+                        <option value="5">Antioquia</option>
+                        <option value="81">Arauca</option>
+                        <option value="8">Atlántico</option>
+                        <option value="13">Bolívar</option>
+                        <option value="15">Boyacá</option>
+                        <option value="17">Caldas</option>
+                        <option value="18">Caquetá</option>
+                        <option value="85">Casanare</option>
+                        <option value="19">Cauca</option>
+                        <option value="20">Cesar</option>
+                        <option value="27">Chocó</option>
+                        <option value="23">Córdoba</option>
+                        <option value="1">Cundinamarca</option>
+                        <option value="11">DistritoCapital(not_implemented)</option>
+                        <option value="94">Guainía</option>
+                        <option value="95">Guaviare</option>
+                        <option value="41">Huila</option>
+                        <option value="44">LaGuajira(not_implemented)</option>
+                        <option value="47">Magdalena</option>
+                        <option value="50">Meta</option>
+                        <option value="52">Nariño</option>
+                        <option value="54">NorteDeSantander(not_implemented)</option>
+                        <option value="86">Putumayo</option>
+                        <option value="63">Quindío</option>
+                        <option value="66">Risaralda</option>
+                        <option value="88">SanAndrésyProvidencia(not_implemented)</option>
+                        <option value="68">Santander</option>
+                        <option value="70">Sucre</option>
+                        <option value="73">Tolima</option>
+                        <option value="76">Valle(not_implemented)</option>
+                        <option value="97">Vaupés</option>
+                        <option value="99">Vichada</option>
                 </select>
                 </div>
                 <div class="sqrMunicipio">
@@ -74,12 +74,18 @@
                         <option>Viernes</option>-->
                     </select>
                 </div>
-                <button class="BotonFiltrar" v-on:click="enviarDept()">Filtrar</button>
-                
+                <button class="BotonFiltrar" @click="mostrarCasosDpto">Filtrar</button>
+                <div class="loadingAnim" v-if="loading">
+                    <fingerprint-spinner
+                        :animation-duration="1100"
+                        :size="64"
+                        color="#0e918c"
+/>
+                </div>                             
             </div>           
         <div class="contenedor_centro">
             <!--<h1>Mapa</h1>-->
-            <div id="map"><google-map/></div>
+            <div id="map"><google-map :lati="LAT" :longi="LONG" /></div>
         </div>
         <div class="contenedor_derecha" v-for="caso in casos" v-bind:key="caso.id">
             <!--<h1>Casos</h1>-->
@@ -109,23 +115,89 @@
                 <!--<div class="dataContent">4444</div>-->
             </div>
         </div>
-     
+        <!-- en caso de que se agreguen filtros-->
+        <div class="contenedor_derecha" v-if="casosDpto.length !=0">
+            <!--<h1>Casos</h1>-->
+            <div class="sqrConfirmados">
+                <h1 class="dataTitulo">Casos Confirmados</h1>
+                <div class="dataContent">{{casosDpto.casosTol}}</div>
+                <!--<div class="dataContent">1111</div>-->
+            </div>
+            <div class="sqrActivos">
+                <h1 class="dataTitulo">Casos Activos</h1>
+                <div class="dataContent">{{casosDpto.casosAct}}</div>
+                <!--<div class="dataContent">2222</div>-->
+            </div>
+            <div class="sqrRecuperados">
+                <h1 class="dataTitulo">Recuperados</h1>
+                <div class="dataContent">{{casosDpto.casosRec}}</div>
+                <!--<div class="dataContent">3333</div>-->
+            </div>
+            <div class="sqrFallecidos">
+                <h1 class="dataTitulo">Fallecidos</h1>
+                <div class="dataContent">{{casosDpto.casosFal}}</div>
+                <!--<div class="dataContent">4444</div>-->
+            </div>
+            <div class="sqrAsintomaticos">
+                <h1 class="dataTitulo">Asintomaticos</h1>
+                <div class="dataContent">{{casosDpto.casosAsin}}</div>
+                <!--<div class="dataContent">4444</div>-->
+            </div>
+        </div>
+        <div v-if="casosDpto.length !=0">{{casosDpto}}</div>
+        <div v-if="casosDpto.length !=0">latitud:{{LAT}}</div>
+        <div v-if="casosDpto.length !=0">longitud:{{LONG}}</div>
+        <!--<div>{{coorDptos}}</div>-->
+         
+        <!--<table class="table" v-if="casosDpto.length !=0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Casos Fallecidos</th>
+                        <th>Casos Recuperados</th>
+                        <th>Casos Totales</th>
+                        <th>casos Actuales</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{casosDpto.id}}</td>
+                        <td>{{casosDpto.casosFal}}</td>
+                        <td>{{casosDpto.casosRec}}</td>
+                        <td>{{casosDpto.casosTol}}</td>
+                        <td>{{casosDpto.casosAct}}</td>
+                    </tr>
+                </tbody>
+            </table>-->
     </div>
    
 </template>
 
 <script>
+import { FingerprintSpinner } from 'epic-spinners'
 import CasosService from './services/CasosService';
+import CasosDepartamentoService from './services/CasosDepartamentoService';
+import CoorDptoService from './services/CoorDptoService';
 import GoogleMap from "./GoogleMap";
 export default {
     name:"Casos",
     components: {
+    FingerprintSpinner,
     GoogleMap
   },
     data(){
+        
         return{
+            coorDptos:[],
             casos:[],
-            DATA: "data1"
+            casosDpto:[],
+            DATA: "data1",
+            DATA1: "Departamento",
+            DATA_DPTO:"algo",
+            NUM_DPTO:0,
+            loading: false,
+            LAT:4.6420147,
+            LONG:-78.8461639,
         };
     },
     methods:{
@@ -135,15 +207,70 @@ export default {
                 this.casos = response.data;
                 //console.log("algo");
             });
+        },
+        cordenadasDptosData(){
+            CoorDptoService.devolverCoorDptos(this.DATA1).then(response=>{
+                console.log(response.data);
+                this.coorDptos = response.data;
+                //console.log("algo");
+            });
+        },
+    refreshDataDptos: function(event){
+        var id = event.target.value;
+        var value = event.target.options[event.target.options.selectedIndex].text;
+        console.log(id);
+        console.log(value);
+        this.DATA_DPTO=value;
+        this.NUM_DPTO=id
+    },
+    mostrarCasosDpto(){
+        this.loading = true;
+        CasosDepartamentoService.devolverCasosDpto(this.DATA_DPTO).then(response=>{
+            this.casosDpto = response.data;   
+            console.log(this.casosDpto)      
+        });
+        /*CoorDptoService.devolverCoorDptos(this.DATA_DPTO).then(response=>{
+            this.coorDpto = response.data;   
+            console.log(this.coorDpto)      
+        });*/
+        var latitud;
+        var longitud;
+        if(this.NUM_DPTO!=0){
+            if(this.NUM_DPTO==1){
+                latitud=4.7836355;
+                longitud=-74.5325338;
+                console.log(latitud);
+                console.log(longitud);
+            }else{
+                for(var i=0; i<36; i++){
+                    if(this.coorDptos[i].id==this.NUM_DPTO){
+                        latitud=this.coorDptos[i].latitud;
+                        longitud=this.coorDptos[i].longitud;
+                    }
+                }
+                console.log(latitud);
+                console.log(longitud); 
+            }
         }
+        this.LAT=Number(latitud);
+        this.LONG=Number(longitud);
+        setTimeout(() => {
+           this.loading = false;
+        }, 2000)
+
+
+    }
     },
     created(){
         this.refreshData();
+        this.cordenadasDptosData();
+        
     }    
 };
 </script>
 
 <style>
+
 .contenedor_izq{
   height: 680px;
   width: 300px;
@@ -201,6 +328,13 @@ export default {
     cursor:pointer;
   }
 
+
+  .loadingAnim{
+  position: fixed;
+  top: 750px;
+  left: 380px;
+}
+ 
     .listaDep{
             display: block;
             height: 30px;

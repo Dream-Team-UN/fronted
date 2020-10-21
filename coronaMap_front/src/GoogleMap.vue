@@ -10,10 +10,10 @@
       </label>
       <br/>
 
-    </div>-->
-    <gmap-map
+    </div v-on:click="funcionPrueba">-->
+    <gmap-map v-on:click="funcionPrueba"
       :center="center"
-      :zoom="7"
+      :zoom="10"
       style="width:100%;  height: 675px;"
     >
       <gmap-marker
@@ -29,19 +29,25 @@
 <script>
 export default {
   name: "GoogleMap",
+ props: {
+    lati: Number,
+    longi: String
+  },
   data() {
     return {
-      // Coordenadas de Amazonas (Temporales)
-      center: { lat: -2.0558744, lng: -73.0119454 },
+      // Coordenadas de Colombia (default)
+      center: { lat: 4.6420147, lng: -78.8461639 },
       markers: [],
       places: [],
-      currentPlace: null
+      currentPlace: null,
+      
     };
   },
 
   mounted() {
-    // Función para centrar el mapa en la ubicación del usuario:
-    // this.geolocate();
+    // Función para centrar el mapa en la ubicación dada usuario:
+    this.geolocate();
+    console.log("latitud "+this.lati+"longitud "+this.longi)
   },
 
   methods: {
@@ -61,13 +67,23 @@ export default {
         this.currentPlace = null;
       }
     },
-    geolocate: function() {
+    funcionPrueba(){
+      console.log("latitud enviada "+this.lati),
+      console.log("longitud enviada "+this.longi)
+    },
+    /*geolocate: function() {
       navigator.geolocation.getCurrentPosition(position => {
         this.center = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
       });
+    },*/
+    geolocate() {
+        this.center = {
+          lat: this.lati,
+          lng: this.longi
+        };    
     }
   }
 };
