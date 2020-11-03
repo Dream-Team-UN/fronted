@@ -145,9 +145,9 @@
                 <!--<div class="dataContent">4444</div>-->
             </div>
         </div>
-        <div v-if="casosDpto.length !=0">{{casosDpto}}</div>
+        <!--<div v-if="casosDpto.length !=0">{{casosDpto}}</div>
         <div v-if="casosDpto.length !=0">latitud:{{LAT}}</div>
-        <div v-if="casosDpto.length !=0">longitud:{{LONG}}</div>
+        <div v-if="casosDpto.length !=0">longitud:{{LONG}}</div>-->
         <!--<div>{{coorDptos}}</div>-->
          
         <!--<table class="table" v-if="casosDpto.length !=0">
