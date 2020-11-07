@@ -13,7 +13,7 @@
     </div>-->
     <gmap-map v-on:click="funcionPrueba"
       :center="{ lat: this.lati, lng: this.longi}"
-      :zoom="10"
+      :zoom="this.zoomi"
       style="width:100%;  height: 675px;"
     >
       <gmap-marker
@@ -32,7 +32,8 @@ export default {
   name: "GoogleMap",
  props: {
     lati: Number,
-    longi: Number
+    longi: Number,
+    zoomi: Number
   },
   data() {
     return {

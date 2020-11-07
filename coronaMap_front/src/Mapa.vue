@@ -28,45 +28,46 @@
                     <h3>Filtrar por Departamento:</h3>
                     <select class="listaDep" v-on:change="refreshDataDptos($event)">
                         <option value="0">Seleccione un Departamento</option>
-                        <option value="91">Amazonas</option>
-                        <option value="5">Antioquia</option>
-                        <option value="81">Arauca</option>
-                        <option value="8">Atlántico</option>
-                        <option value="13">Bolívar</option>
-                        <option value="15">Boyacá</option>
-                        <option value="17">Caldas</option>
-                        <option value="18">Caquetá</option>
-                        <option value="85">Casanare</option>
-                        <option value="19">Cauca</option>
-                        <option value="20">Cesar</option>
-                        <option value="27">Chocó</option>
-                        <option value="23">Córdoba</option>
-                        <option value="1">Cundinamarca</option>
-                        <option value="11">DistritoCapital(not_implemented)</option>
-                        <option value="94">Guainía</option>
-                        <option value="95">Guaviare</option>
-                        <option value="41">Huila</option>
-                        <option value="44">LaGuajira(not_implemented)</option>
-                        <option value="47">Magdalena</option>
-                        <option value="50">Meta</option>
-                        <option value="52">Nariño</option>
+                        <option value="91">AMAZONAS</option>
+                        <option value="5">ANTIOQUIA</option>
+                        <option value="81">ARAUCA</option>
+                        <option value="8">ATLANTICO</option>
+                        <option value="13">BOLIVAR</option>
+                        <option value="15">BOYACA</option>
+                        <option value="17">CALDAS</option>
+                        <option value="18">CAQUETA</option>
+                        <option value="85">CASANARE</option>
+                        <option value="19">CAUCA</option>
+                        <option value="20">CESAR</option>
+                        <option value="27">CHOCO</option>
+                        <option value="23">CORDOBA</option>
+                        <option value="25">CUNDINAMARCA</option>
+                        <option value="11">BOGOTA</option>
+                        <option value="94">GUAINIA</option>
+                        <option value="95">GUAVIARE</option>
+                        <option value="41">HUILA</option>
+                        <option value="44">GUAJIRA</option>
+                        <option value="47">MAGDALENA</option>
+                        <option value="50">META</option>
+                        <option value="52">NARIÑO</option>
                         <option value="54">NorteDeSantander(not_implemented)</option>
-                        <option value="86">Putumayo</option>
-                        <option value="63">Quindío</option>
-                        <option value="66">Risaralda</option>
+                        <option value="86">PUTUMAYO</option>
+                        <option value="63">QUINDIO</option>
+                        <option value="66">RISARALDA</option>
                         <option value="88">SanAndrésyProvidencia(not_implemented)</option>
-                        <option value="68">Santander</option>
-                        <option value="70">Sucre</option>
-                        <option value="73">Tolima</option>
-                        <option value="76">Valle(not_implemented)</option>
-                        <option value="97">Vaupés</option>
-                        <option value="99">Vichada</option>
+                        <option value="68">SANTANDER</option>
+                        <option value="70">SUCRE</option>
+                        <option value="73">TOLIMA</option>
+                        <option value="76">VALLE</option>
+                        <option value="97">VAUPES</option>
+                        <option value="99">VICHADA</option>
                 </select>
                 </div>
                 <div class="sqrMunicipio">
                     <h3>Filtrar por Municipio:</h3>
-                    <select class="listaDep">
-                        <option>Selecciona un Municipio</option>
+                    
+                    <select class="listaDep" id="selectMun" v-on:change="refreshDataMun($event)">
+                        <option value="0">Selecciona un Municipio</option>
                         <!--<option>Lunes</option>
                         <option>Martes</option>
                         <option>Miércoles</option>
@@ -74,7 +75,7 @@
                         <option>Viernes</option>-->
                     </select>
                 </div>
-                <button class="BotonFiltrar" @click="mostrarCasosDpto">Filtrar</button>
+                <button class="BotonFiltrar" @click="mostrarCasosDptoMun">Filtrar</button>
                 <div class="loadingAnim" v-if="loading">
                     <fingerprint-spinner
                         :animation-duration="1100"
@@ -86,7 +87,7 @@
         <div class="contenedor_centro">
             <!--<h1>Mapa</h1>-->
             <!--<div id="map"><google-map :lati="LAT" :longi="LONG" /></div>-->
-            <div id="map"><google-map :lati="LAT" :longi="LONG" /></div>
+            <div id="map"><google-map :lati="LAT" :longi="LONG" :zoomi="ZOOM"/></div>
         </div>
         <div class="contenedor_derecha" v-for="caso in casos" v-bind:key="caso.id">
             <!--<h1>Casos</h1>-->
@@ -117,7 +118,7 @@
             </div>
         </div>
         <!-- en caso de que se agreguen filtros-->
-        <div class="contenedor_derecha" v-if="casosDpto.length !=0">
+        <div class="contenedor_derecha" v-if="casosDpto.length !=0 && NUM_MUN==0">
             <!--<h1>Casos</h1>-->
             <div class="sqrConfirmados">
                 <h1 class="dataTitulo">Casos Confirmados</h1>
@@ -145,9 +146,40 @@
                 <!--<div class="dataContent">4444</div>-->
             </div>
         </div>
-        <!--<div v-if="casosDpto.length !=0">{{casosDpto}}</div>
+        <div class="contenedor_derecha" v-if="casosDpto.length !=0 && NUM_MUN!=0 && casosMun.length!=0">
+            <!--<h1>Casos</h1>-->
+            <div class="sqrConfirmados">
+                <h1 class="dataTitulo">Casos Confirmados</h1>
+                <div class="dataContent">{{casosMun.casosTol}}</div>
+                <!--<div class="dataContent">1111</div>-->
+            </div>
+            <div class="sqrActivos">
+                <h1 class="dataTitulo">Casos Activos</h1>
+                <div class="dataContent">{{casosMun.casosAct}}</div>
+                <!--<div class="dataContent">2222</div>-->
+            </div>
+            <div class="sqrRecuperados">
+                <h1 class="dataTitulo">Recuperados</h1>
+                <div class="dataContent">{{casosMun.casosRec}}</div>
+                <!--<div class="dataContent">3333</div>-->
+            </div>
+            <div class="sqrFallecidos">
+                <h1 class="dataTitulo">Fallecidos</h1>
+                <div class="dataContent">{{casosMun.casosFal}}</div>
+                <!--<div class="dataContent">4444</div>-->
+            </div>
+            <div class="sqrAsintomaticos">
+                <h1 class="dataTitulo">Asintomaticos</h1>
+                <div class="dataContent">{{casosMun.casosAsin}}</div>
+                <!--<div class="dataContent">4444</div>-->
+            </div>
+        </div>
+        
+    
+        <div v-if="casosDpto.length !=0">casos Departamento {{casosDpto}}</div>
         <div v-if="casosDpto.length !=0">latitud:{{LAT}}</div>
-        <div v-if="casosDpto.length !=0">longitud:{{LONG}}</div>-->
+        <div v-if="casosDpto.length !=0">longitud:{{LONG}}</div>
+        <div v-if="casosDpto.length !=0">zoom:{{ZOOM}}</div>
         <!--<div>{{coorDptos}}</div>-->
          
         <!--<table class="table" v-if="casosDpto.length !=0">
@@ -178,7 +210,9 @@
 import { FingerprintSpinner } from 'epic-spinners'
 import CasosService from './services/CasosService';
 import CasosDepartamentoService from './services/CasosDepartamentoService';
+import CasosMunicipioService from './services/CasosMunicipioService';
 import CoorDptoService from './services/CoorDptoService';
+import CoorMunicipioService from './services/CoorMunicipioService';
 import GoogleMap from "./GoogleMap";
 export default {
     name:"Casos",
@@ -189,16 +223,24 @@ export default {
     data(){
         
         return{
-            coorDptos:[],
-            casos:[],
-            casosDpto:[],
+            coorDptos:[],//guarda las coordenadas de todos los dptos de Colombia
+            casos:[], //casos de Covid en Colombia
+            casosDpto:[],//casos de Covid en un Dpto especifico
+            casosMun:[],//casos de Covid en un Municipio especifico
+            nombreMunDpto:[],//guarda el nombre y el id de los municipios de un dpto especifico
+            idMunDpto:[],
+            coorMun:[],//guarda las coordenadas de todos los municipios de Colombia (onCreated)
             DATA: "data1",
             DATA1: "Departamento",
             DATA_DPTO:"algo",
             NUM_DPTO:0,
+            DATA_MUN:"algo",
+            NUM_MUN:0,
             loading: false,
             LAT:4.6420147,
             LONG:-78.8461639,
+            ZOOM:5.5
+           
         };
     },
     methods:{
@@ -216,19 +258,105 @@ export default {
                 //console.log("algo");
             });
         },
+        cordenadasMunicipiosData(){
+            CoorMunicipioService.devolverCoorMunicipios().then(response=>{
+                console.log(response.data);
+                this.coorMun = response.data;
+                //console.log(this.coorMun);
+            });
+        },
     refreshDataDptos: function(event){
         var id = event.target.value;
         var value = event.target.options[event.target.options.selectedIndex].text;
+        var select = document.getElementById("selectMun");
+        var auxNomMun=[];
+        var auxIdMun=[];
+
         console.log(id);
         console.log(value);
         this.DATA_DPTO=value;
-        this.NUM_DPTO=id
+        this.NUM_DPTO=id;
+        
+        for(var i=0; i<1065; i++){
+                    if(this.coorMun[i].dpto.id==id){
+                        auxNomMun.push(this.coorMun[i].name);
+                        auxIdMun.push(this.coorMun[i].id);
+                    }
+                }
+        this.nombreMunDpto=auxNomMun;
+        this.idMunDpto=auxIdMun;
+        auxNomMun=[];
+        auxIdMun=[];
+        console.log(this.nombreMunDpto.length);
+        console.log(this.nombreMunDpto);
+        console.log(this.idMunDpto);
+            
+
+
+        /*if(select.length > 1){
+            for(var i=0;i< select.length;i++){
+                select.remove(i);
+            }
+        
+        }*/
+        for (i = select.length - 1; i >= 1; i--) {
+	        select.remove(i);
+        }
+        
+        //select.length=0;
+        for(var i = 0; i < this.nombreMunDpto.length; i++) {
+            var nom_opt = this.nombreMunDpto[i];
+            var id_opt = this.idMunDpto[i];
+            var el = document.createElement("option");
+            el.textContent = nom_opt;
+            el.value = id_opt;
+            select.appendChild(el);
+            
+        }
     },
-    mostrarCasosDpto(){
+
+    refreshDataMun: function(event){
+        var id = event.target.value;
+        
+        var value = event.target.options[event.target.options.selectedIndex].text;
+        console.log("id de select mun: "+id);
+        console.log(value);
+        
+        //se añade exepcion para Capitales de ser necesario
+
+        if(value=="Cartagena De Indias"){
+            value="Cartagena";
+        }
+         if(value=="Bogotá D.C."){
+            value="BOGOTA";
+        }
+        
+        //tratamiento nombre Municipio
+        //primero se quitar las tildes y dieresis
+        const acentos = {'á':'a','é':'e','í':'i','ó':'o','ú':'u','Á':'A','É':'E','Í':'I','Ó':'O','Ú':'U','ü':'u'};
+        var value_sinAcent= value.split('').map( letra => acentos[letra] || letra).join('').toString();
+        console.log("palabra sin acentos: "+value_sinAcent);	
+        //luego se quitan los espacios
+        var value_sinEsp=value_sinAcent.replace(/ /g, "");
+        console.log("palabra sin acentos y sin espacios: "+value_sinEsp);
+        //se pone en mayuscula toda la palabra
+        var valueModificado=value_sinEsp.toUpperCase();
+        console.log("palabra sin acentos,sin espacios y en mayuscula: "+valueModificado); 
+        
+        this.DATA_MUN=valueModificado;
+        this.NUM_MUN=id;
+    },
+    mostrarCasosDptoMun(){
         this.loading = true;
         CasosDepartamentoService.devolverCasosDpto(this.DATA_DPTO).then(response=>{
             this.casosDpto = response.data;   
-            console.log(this.casosDpto)      
+            console.log(this.casosDpto);
+            console.log("long casosDpto: "+this.casosDpto.length);      
+        });
+        CasosMunicipioService.devolverCasosMunicipio(this.DATA_MUN).then(response=>{
+            this.casosMun = response.data;   
+            console.log(this.casosMun);
+            console.log("long casosMun: "+this.casosMun.length);      
         });
         /*CoorDptoService.devolverCoorDptos(this.DATA_DPTO).then(response=>{
             this.coorDpto = response.data;   
@@ -236,28 +364,42 @@ export default {
         });*/
         var latitud;
         var longitud;
-        if(this.NUM_DPTO!=0){
-            if(this.NUM_DPTO==1){
-                latitud=4.7836355;
-                longitud=-74.5325338;
-                console.log(latitud);
-                console.log(longitud);
-            }else{
+        var zoom;
+    
+        if(this.NUM_MUN==0){
                 for(var i=0; i<36; i++){
                     if(this.coorDptos[i].id==this.NUM_DPTO){
                         latitud=this.coorDptos[i].latitud;
                         longitud=this.coorDptos[i].longitud;
+                        zoom=this.coorDptos[i].zoom;
+                        console.log(this.coorDptos[i]);
                     }
                 }
                 console.log(latitud);
-                console.log(longitud); 
-            }
+                console.log(longitud);
+                console.log(zoom); 
+            
+        }
+        if(this.NUM_MUN!=0){
+            for(var i=0; i<1065; i++){
+                    if(this.coorMun[i].id==this.NUM_MUN){
+                        latitud=this.coorMun[i].latitud;
+                        longitud=this.coorMun[i].longitud;
+                        zoom=this.coorMun[i].zoom;
+                        console.log(this.coorMun[i]);
+                    }
+                }
+                console.log(latitud);
+                console.log(longitud);
+                console.log(zoom);             
         }
         this.LAT=Number(latitud);
         this.LONG=Number(longitud);
+        this.ZOOM=Number(zoom);
         setTimeout(() => {
            this.loading = false;
         }, 2000)
+        
 
 
     }
@@ -265,7 +407,7 @@ export default {
     created(){
         this.refreshData();
         this.cordenadasDptosData();
-        
+        this.cordenadasMunicipiosData();        
     }    
 };
 </script>
