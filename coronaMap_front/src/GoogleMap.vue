@@ -16,12 +16,16 @@
       :zoom="this.zoomi"
       style="width:100%;  height: 675px;"
     >
-      <gmap-marker
-        :key="index"
-        v-for="(m, index) in markers"
-        :position="m.position"
-        @click="center=m.position"
-      ></gmap-marker>
+      <GmapCircle
+    :center="{ lat: this.lati, lng: this.longi}"
+    :radius="6000"
+    :visible="true"
+    :options="{fillColor:'red',fillOpacity:0.35,strokeOpacity: 0.8,strokeWeight: 2,strokeColor: 'red'}"
+    
+      
+      
+      
+  ></GmapCircle>
     </gmap-map>
    
   </div>
