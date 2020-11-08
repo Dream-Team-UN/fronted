@@ -217,9 +217,9 @@ import GoogleMap from "./GoogleMap";
 export default {
     name:"Casos",
     components: {
-    FingerprintSpinner,
-    GoogleMap
-  },
+        FingerprintSpinner,
+        GoogleMap
+    },
     data(){
         
         return{

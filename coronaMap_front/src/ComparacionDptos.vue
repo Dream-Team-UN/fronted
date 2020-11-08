@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="filtroA">
-            <h1 id="filtrosTitulo">Municipio 1</h1>
+            <h1 id="filtrosTitulo">Departamento 1</h1>
             <div class="sqrDepartamento">
                 <h3>Departamento:</h3>
                 <select class="listaDep" v-on:change="refreshDataDptos($event)">
@@ -39,12 +39,6 @@
                     <option value="76">VALLE</option>
                     <option value="97">VAUPES</option>
                     <option value="99">VICHADA</option>
-                </select>
-            </div>
-            <div class="sqrMunicipio">
-                <h3>Municipio:</h3>
-                <select class="listaDep" id="selectMun" v-on:change="refreshDataMun($event)">
-                    <option value="0">Selecciona un Municipio</option>
                 </select>
             </div>
             <button class="BotonFiltrar" @click="mostrarCasosDptoMun">Filtrar</button>
@@ -57,7 +51,7 @@
             </div>
         </div>
         <div class="filtroB">
-            <h1 id="filtrosTitulo">Municipio 2</h1>
+            <h1 id="filtrosTitulo">Departamento 2</h1>
             <div class="sqrDepartamento">
                 <h3>Departamento:</h3>
                 <select class="listaDep" v-on:change="refreshDataDptos($event)">
@@ -95,12 +89,6 @@
                     <option value="76">VALLE</option>
                     <option value="97">VAUPES</option>
                     <option value="99">VICHADA</option>
-                </select>
-            </div>
-            <div class="sqrMunicipio">
-                <h3>Municipio:</h3>
-                <select class="listaDep" id="selectMun" v-on:change="refreshDataMun($event)">
-                    <option value="0">Selecciona un Municipio</option>
                 </select>
             </div>
             <button class="BotonFiltrar" @click="mostrarCasosDptoMun">Filtrar</button>
@@ -336,7 +324,7 @@ export default {
     }
 
     #filtrosTitulo {
-        font-size: 50px;
+        font-size: 35px;
         text-align: center;
         position: relative;
         top: 70px;
@@ -347,15 +335,7 @@ export default {
         height: 100px;
         width: 200px;
         position: absolute;
-        top: 200px;
-        left: 45px;
-    }
-
-    .sqrMunicipio {
-        height: 100px;
-        width: 200px;
-        position: absolute;
-        top: 300px;
+        top: 230px;
         left: 45px;
     }
 
