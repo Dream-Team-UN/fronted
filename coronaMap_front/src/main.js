@@ -5,17 +5,23 @@ import App from './App.vue'
 import Inicio from './Inicio.vue'
 import Mapa from './Mapa.vue'
 import Comportamiento from './Comportamiento.vue'
+import ComparacionDptos from './ComparacionDptos'
+import ComparacionMun from './ComparacionMun'
 import Enlaces from './Enlaces.vue'
 import * as VueGoogleMaps from "vue2-google-maps";
+import Chart from 'primevue/chart';
 
 Vue.use(VueRouter);
 Vue.use(Carousel3d);
+Vue.use(Chart);
 
 const routes=[
   {path:'/', component: Inicio},
   {path:'/mapa', component: Mapa},
   {path:'/comportamiento', component: Comportamiento},
-  {path:'/enlaces', component: Enlaces}
+  {path:'/enlaces', component: Enlaces},
+  {path:'/comportamiento/Dptos', component: ComparacionDptos},
+  {path:'/comportamiento/Municipios', component: ComparacionMun}
 ];
 
 const router=new VueRouter({

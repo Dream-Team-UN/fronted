@@ -50,11 +50,11 @@
                         <option value="47">MAGDALENA</option>
                         <option value="50">META</option>
                         <option value="52">NARIÑO</option>
-                        <option value="54">NorteDeSantander(not_implemented)</option>
+                        <option value="54">NORTE SANTANDER</option>
                         <option value="86">PUTUMAYO</option>
                         <option value="63">QUINDIO</option>
                         <option value="66">RISARALDA</option>
-                        <option value="88">SanAndrésyProvidencia(not_implemented)</option>
+                        <option value="88">SAN ANDRES</option>
                         <option value="68">SANTANDER</option>
                         <option value="70">SUCRE</option>
                         <option value="73">TOLIMA</option>
@@ -292,13 +292,6 @@ export default {
         console.log(this.idMunDpto);
             
 
-
-        /*if(select.length > 1){
-            for(var i=0;i< select.length;i++){
-                select.remove(i);
-            }
-        
-        }*/
         for (i = select.length - 1; i >= 1; i--) {
 	        select.remove(i);
         }
@@ -337,11 +330,11 @@ export default {
         var value_sinAcent= value.split('').map( letra => acentos[letra] || letra).join('').toString();
         console.log("palabra sin acentos: "+value_sinAcent);	
         //luego se quitan los espacios
-        var value_sinEsp=value_sinAcent.replace(/ /g, "");
-        console.log("palabra sin acentos y sin espacios: "+value_sinEsp);
+        //var value_sinEsp=value_sinAcent.replace(/ /g, "");
+        //console.log("palabra sin acentos y sin espacios: "+value_sinEsp);
         //se pone en mayuscula toda la palabra
-        var valueModificado=value_sinEsp.toUpperCase();
-        console.log("palabra sin acentos,sin espacios y en mayuscula: "+valueModificado); 
+        var valueModificado=value_sinAcent.toUpperCase();
+        console.log("palabra sin acentos y en mayuscula: "+valueModificado); 
         
         this.DATA_MUN=valueModificado;
         this.NUM_MUN=id;
@@ -422,7 +415,7 @@ export default {
   left: 260px;
   background-color: #e4e3e3;
   border-style: solid;
-  border-width: 2px;
+  border-width: 1px;
   border-color: #212121;
 }
 #filtrosTitulo {
@@ -455,7 +448,7 @@ export default {
             position: fixed;
             top: 650px;
             left: 315px;
-            background-color: #84a9ac;
+            background-color: #a3d8f4;
             box-sizing: border-box;
             margin: 10px auto;
             border-radius: .3em;
@@ -525,7 +518,7 @@ export default {
    left: 560px;
    background-color: #e4e3e3;
   border-style: solid;
-  border-width: 2px;
+  border-width: 1px;
   border-color: #212121;
   
 }
@@ -537,7 +530,7 @@ export default {
   left: 1360px;
   background-color: #e4e3e3;
   border-style: solid;
-  border-width: 2px;
+  border-width: 1px;
   border-color: #212121;
 }
 .dataTitulo {

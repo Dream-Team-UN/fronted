@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
+    "chart.js": "^2.9.4",
     "epic-spinners": "^1.1.0",
+    "primevue": "^2.2.0",
     "vue": "^2.5.11",
     "vue-carousel-3d": "^1.0.1",
     "vue-router": "^3.4.5",
