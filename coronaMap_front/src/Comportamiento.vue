@@ -68,9 +68,9 @@ created(){
 }
 
 .BotonFiltrarComp{
-    height: 30px;
+    height: 40px;
     width: 320px;
-    background-color:#7579e7;
+    background-color:#006e8c;
     box-sizing: border-box;
     margin: 10px auto;
     margin-left: 40px;
@@ -78,7 +78,7 @@ created(){
     text-decoration: none;
     font-weight: 600;
     font-size: 18px;
-    border: 1px solid #0a0a0a;
+    border: 0px solid #0a0a0a;
     color: #eeeeee;
 }
  .BotonFiltrarComp:hover{
@@ -88,9 +88,9 @@ created(){
   }
 
   .BotonDownload{
-    height: 30px;
+    height: 40px;
     width: 320px;
-    background-color:#7579e7;
+    background-color:#006e8c;
     box-sizing: border-box;
     margin: 10px auto;
     margin-left: 790px;
@@ -98,7 +98,7 @@ created(){
     text-decoration: none;
     font-weight: 600;
     font-size: 18px;
-    border: 1px solid #0a0a0a;
+    border: 0px solid #0a0a0a;
     color: #eeeeee;
 }
  .BotonDownload:hover{

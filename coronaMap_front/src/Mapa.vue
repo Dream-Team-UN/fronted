@@ -1,96 +1,73 @@
 <template>
-    <div id="body">
-        <h1>Mapa</h1>
-       <!--<table class="table">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Casos Fallecidos</th>
-                        <th>Casos Recuperados</th>
-                        <th>Casos Totales</th>
-                        <th>casos Actuales</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="caso in casos" v-bind:key="caso.id">
-                        <td>{{caso.id}}</td>
-                        <td>{{caso.casosFal}}</td>
-                        <td>{{caso.casosRec}}</td>
-                        <td>{{caso.casosTol}}</td>
-                        <td>{{caso.casosAct}}</td>
-                    </tr>
-                </tbody>
-            </table>-->
-      
-            <div class="contenedor_izq">
-                <h1 id="filtrosTitulo">Filtros</h1>
-                <div class="sqrDepartamento">
-                    <h3>Filtrar por Departamento:</h3>
-                    <select class="listaDep" v-on:change="refreshDataDptos($event)">
-                        <option value="0">Seleccione un Departamento</option>
-                        <option value="91">AMAZONAS</option>
-                        <option value="5">ANTIOQUIA</option>
-                        <option value="81">ARAUCA</option>
-                        <option value="8">ATLANTICO</option>
-                        <option value="13">BOLIVAR</option>
-                        <option value="15">BOYACA</option>
-                        <option value="17">CALDAS</option>
-                        <option value="18">CAQUETA</option>
-                        <option value="85">CASANARE</option>
-                        <option value="19">CAUCA</option>
-                        <option value="20">CESAR</option>
-                        <option value="27">CHOCO</option>
-                        <option value="23">CORDOBA</option>
-                        <option value="25">CUNDINAMARCA</option>
-                        <option value="11">BOGOTA</option>
-                        <option value="94">GUAINIA</option>
-                        <option value="95">GUAVIARE</option>
-                        <option value="41">HUILA</option>
-                        <option value="44">GUAJIRA</option>
-                        <option value="47">MAGDALENA</option>
-                        <option value="50">META</option>
-                        <option value="52">NARIÑO</option>
-                        <option value="54">NORTE SANTANDER</option>
-                        <option value="86">PUTUMAYO</option>
-                        <option value="63">QUINDIO</option>
-                        <option value="66">RISARALDA</option>
-                        <option value="88">SAN ANDRES</option>
-                        <option value="68">SANTANDER</option>
-                        <option value="70">SUCRE</option>
-                        <option value="73">TOLIMA</option>
-                        <option value="76">VALLE</option>
-                        <option value="97">VAUPES</option>
-                        <option value="99">VICHADA</option>
+    <div id="body">      
+        <div class="contenedor_izq">
+            <div class="sqrDepartamento">
+                <h3>Filtrar por Departamento:</h3>
+                <select class="listaDep" v-on:change="refreshDataDptos($event)">
+                    <option value="0">Seleccione un Departamento</option>
+                    <option value="91">AMAZONAS</option>
+                    <option value="5">ANTIOQUIA</option>
+                    <option value="81">ARAUCA</option>
+                    <option value="8">ATLANTICO</option>
+                    <option value="13">BOLIVAR</option>
+                    <option value="15">BOYACA</option>
+                    <option value="17">CALDAS</option>
+                    <option value="18">CAQUETA</option>
+                    <option value="85">CASANARE</option>
+                    <option value="19">CAUCA</option>
+                    <option value="20">CESAR</option>
+                    <option value="27">CHOCO</option>
+                    <option value="23">CORDOBA</option>
+                    <option value="25">CUNDINAMARCA</option>
+                    <option value="11">BOGOTA</option>
+                    <option value="94">GUAINIA</option>
+                    <option value="95">GUAVIARE</option>
+                    <option value="41">HUILA</option>
+                    <option value="44">GUAJIRA</option>
+                    <option value="47">MAGDALENA</option>
+                    <option value="50">META</option>
+                    <option value="52">NARIÑO</option>
+                    <option value="54">NorteDeSantander(not_implemented)</option>
+                    <option value="86">PUTUMAYO</option>
+                    <option value="63">QUINDIO</option>
+                    <option value="66">RISARALDA</option>
+                    <option value="88">SanAndrésyProvidencia(not_implemented)</option>
+                    <option value="68">SANTANDER</option>
+                    <option value="70">SUCRE</option>
+                    <option value="73">TOLIMA</option>
+                    <option value="76">VALLE</option>
+                    <option value="97">VAUPES</option>
+                    <option value="99">VICHADA</option>
+            </select>
+            </div>
+            <div class="sqrMunicipio">
+                <h3>Filtrar por Municipio:</h3>
+                
+                <select class="listaDep" id="selectMun" v-on:change="refreshDataMun($event)">
+                    <option value="0">Selecciona un Municipio</option>
+                    <!--<option>Lunes</option>
+                    <option>Martes</option>
+                    <option>Miércoles</option>
+                    <option>Jueves</option>
+                    <option>Viernes</option>-->
                 </select>
-                </div>
-                <div class="sqrMunicipio">
-                    <h3>Filtrar por Municipio:</h3>
-                    
-                    <select class="listaDep" id="selectMun" v-on:change="refreshDataMun($event)">
-                        <option value="0">Selecciona un Municipio</option>
-                        <!--<option>Lunes</option>
-                        <option>Martes</option>
-                        <option>Miércoles</option>
-                        <option>Jueves</option>
-                        <option>Viernes</option>-->
-                    </select>
-                </div>
-                <button class="BotonFiltrar" @click="mostrarCasosDptoMun">Filtrar</button>
-                <div class="loadingAnim" v-if="loading">
-                    <fingerprint-spinner
-                        :animation-duration="1100"
-                        :size="64"
-                        color="#0e918c"
-/>
-                </div>                             
-            </div>           
+            </div>
+            <button class="BotonFiltrar" @click="mostrarCasosDptoMun">Filtrar</button>
+            <div class="loadingAnim" v-if="loading">
+                <fingerprint-spinner
+                    :animation-duration="1100"
+                    :size="64"
+                    color="#0e918c"
+                />
+            </div>                             
+        </div>           
         <div class="contenedor_centro">
             <!--<h1>Mapa</h1>-->
             <!--<div id="map"><google-map :lati="LAT" :longi="LONG" /></div>-->
             <div id="map"><google-map :lati="LAT" :longi="LONG" :zoomi="ZOOM"/></div>
         </div>
         <div class="contenedor_derecha" v-for="caso in casos" v-bind:key="caso.id">
-            <!--<h1>Casos</h1>-->
+        <!--<div class="contenedor_derecha">-->
             <div class="sqrConfirmados">
                 <h1 class="dataTitulo">Casos Confirmados</h1>
                 <div class="dataContent">{{caso.casosTol}}</div>
@@ -114,7 +91,7 @@
             <div class="sqrAsintomaticos">
                 <h1 class="dataTitulo">Asintomaticos</h1>
                 <div class="dataContent">{{caso.casosAsin}}</div>
-                <!--<div class="dataContent">4444</div>-->
+                <!--<div class="dataContent">5555</div>-->
             </div>
         </div>
         <!-- en caso de que se agreguen filtros-->
@@ -217,9 +194,9 @@ import GoogleMap from "./GoogleMap";
 export default {
     name:"Casos",
     components: {
-    FingerprintSpinner,
-    GoogleMap
-  },
+        FingerprintSpinner,
+        GoogleMap
+    },
     data(){
         
         return{
@@ -292,6 +269,13 @@ export default {
         console.log(this.idMunDpto);
             
 
+
+        /*if(select.length > 1){
+            for(var i=0;i< select.length;i++){
+                select.remove(i);
+            }
+        
+        }*/
         for (i = select.length - 1; i >= 1; i--) {
 	        select.remove(i);
         }
@@ -330,11 +314,11 @@ export default {
         var value_sinAcent= value.split('').map( letra => acentos[letra] || letra).join('').toString();
         console.log("palabra sin acentos: "+value_sinAcent);	
         //luego se quitan los espacios
-        //var value_sinEsp=value_sinAcent.replace(/ /g, "");
-        //console.log("palabra sin acentos y sin espacios: "+value_sinEsp);
+        var value_sinEsp=value_sinAcent.replace(/ /g, "");
+        console.log("palabra sin acentos y sin espacios: "+value_sinEsp);
         //se pone en mayuscula toda la palabra
-        var valueModificado=value_sinAcent.toUpperCase();
-        console.log("palabra sin acentos y en mayuscula: "+valueModificado); 
+        var valueModificado=value_sinEsp.toUpperCase();
+        console.log("palabra sin acentos,sin espacios y en mayuscula: "+valueModificado); 
         
         this.DATA_MUN=valueModificado;
         this.NUM_MUN=id;
@@ -408,67 +392,68 @@ export default {
 <style>
 
 .contenedor_izq{
-  height: 680px;
+  height: 804px;
   width: 300px;
   position: absolute;
-  top: 175px;
-  left: 260px;
-  background-color: #e4e3e3;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #212121;
+  top: 85px;
+  background-color: #ffffff;
+  background-image: linear-gradient(to top right, #bbe6ff, #ffffff);
+  /*border-style: solid;
+  border-width: 2px;
+  border-color: #212121;*/
 }
 #filtrosTitulo {
-            font-size: 60px;
-            text-align: center;
-            position: relative;
-            top: 100px;
-            color: #204051;
-        }
+    font-size: 60px;
+    text-align: center;
+    position: relative;
+    top: 100px;
+    color: #204051;
+}
 
 .sqrDepartamento {
-            height: 100px;
-            width: 200px;
-            position: fixed;
-            top: 400px;
-            left: 315px;
-            
-        }
+    height: 100px;
+    width: 200px;
+    position: fixed;
+    top: 370px;
+    left: 55px;
+    
+}
 .sqrMunicipio {
-            height: 100px;
-            width: 200px;
-            position: fixed;
-            top: 500px;
-            left: 315px;
-        }
+    height: 100px;
+    width: 200px;
+    position: fixed;
+    top: 500px;
+    left: 55px;
+}
 
 .BotonFiltrar {
-            height: 30px;
-            width: 200px;
-            position: fixed;
-            top: 650px;
-            left: 315px;
-            background-color: #a3d8f4;
-            box-sizing: border-box;
-            margin: 10px auto;
-            border-radius: .3em;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 18px;
-            border: 2px solid #0a0a0a;
-        }
+    height: 40px;
+    width: 200px;
+    position: fixed;
+    top: 700px;
+    left: 55px;
+    background-color: #006e8c;
+    box-sizing: border-box;
+    margin: 10px auto;
+    border-radius: .3em;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    border: 0px solid #000000;
+}
     
-  .BotonFiltrar:hover{
-    color: #1883ba;
-    background-color: #ffffff;
-    cursor:pointer;
-  }
+    .BotonFiltrar:hover{
+        color: #1883ba;
+        background-color: #ffffff;
+        cursor:pointer;
+    }
 
 
-  .loadingAnim{
-  position: fixed;
-  top: 750px;
-  left: 380px;
+.loadingAnim{
+    position: fixed;
+    top: 790px;
+    left: 120px;
 }
  
     .listaDep{
@@ -510,85 +495,98 @@ export default {
             font-weight:normal;
         }
 .contenedor_centro{
-
-   height: 680px;
-   width: 800px;
-   position: absolute;
-   top: 175px;
-   left: 560px;
-   background-color: #e4e3e3;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #212121;
-  
+    height: 804px;
+    width: 1284px;
+    position: absolute;
+    top: 85px;
+    left: 300px;
+    background-color: #e4e3e3;
 }
 .contenedor_derecha{
-  height: 680px;
-  width: 300px;
+  height: 804px;
+  width: 336px;
   position: absolute;
-  top: 175px;
-  left: 1360px;
-  background-color: #e4e3e3;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #212121;
+  top: 85px;
+  left: 1584px;
+  background-color: #006e8c;
+  /*border-style: solid;
+  border-width: 2px;
+  border-color: #212121;*/
 }
-.dataTitulo {
-        
-            font-size: 20px;
-            text-align: center;
-            position: relative;
-            top: 10px;
-            color: #204051;
-        }
-        .dataContent {
-        
-            font-size: 50px;
-            text-align: center;
-            position: relative;
-            top: 25px;
-            color: #204051;
-        }
-        .sqrConfirmados {
-            height: 120px;
-            width: 254px;
-            position: fixed;
-            top: 197px;
-            left: 1382px;
-            background-color: #f2f2f2;
-        }
-        .sqrActivos {
-            height: 120px;
-            width: 254px;
-            position: fixed;
-            top: 328px;
-            left: 1382px;
-            background-color: #f2f2f2;
-        }
-        .sqrRecuperados {
-            height: 120px;
-            width: 254px;
-            position: fixed;
-            top: 459px;
-            left: 1382px;
-            background-color: #f2f2f2;
-        }
-        .sqrFallecidos {
-            height: 120px;
-            width: 254px;
-            position: fixed;
-            top: 590px;
-            left: 1382px;
-            background-color: #f2f2f2;
-        }
-        .sqrAsintomaticos {
-            height: 120px;
-            width: 254px;
-            position: fixed;
-            top: 721px;
-            left: 1382px;
-            background-color: #f2f2f2;
-        }
+    .dataTitulo {  
+        font-size: 20px;
+        text-align: center;
+        position: relative;
+        top: 15px;
+        color: #006e8c;
+    }
+    .dataContent {
+        font-size: 55px;
+        text-align: center;
+        position: relative;
+        top: 23px;
+        color: #204051;
+    }
+    .sqrConfirmados {
+        height: 130px;
+        width: 284px;
+        position: relative;
+        top: 26px;
+        left: 26px;
+        border-radius: 1em;
+        background-color: #f2f2f2;
+        border-style: solid;
+        border-width: 5px;
+        border-color: #A533FF;
+    }
+    .sqrActivos {
+        height: 130px;
+        width: 284px;
+        position: relative;
+        top: 52px;
+        left: 26px;
+        border-radius: 1em;
+        background-color: #f2f2f2;
+        border-style: solid;
+        border-width: 5px;
+        border-color: #FFA726;
+    }
+    .sqrRecuperados {
+        height: 130px;
+        width: 284px;
+        position: relative;
+        top: 78px;
+        left: 26px;
+        border-radius: 1em;
+        background-color: #f2f2f2;
+        border-style: solid;
+        border-width: 5px;
+        border-color: #66BB6A;
+    }
+    .sqrFallecidos {
+        height: 130px;
+        width: 284px;
+        position: relative;
+        top: 104px;
+        left: 26px;
+        border-radius: 1em;
+        background-color: #f2f2f2;
+        border-style: solid;
+        border-width: 5px;
+        border-color: #A80028;
+    }
+    .sqrAsintomaticos {
+        height: 130px;
+        width: 284px;
+        position: relative;
+        top: 130px;
+        left: 26px;
+        border-radius: 1em;
+        background-color: #f2f2f2;
+        border-style: solid;
+        border-width: 5px;
+        border-color: #42A5F5;
+    }
 
 
 </style>

@@ -338,20 +338,20 @@ export default {
         left: 45px;
     }
     .BotonCompararD {
-        height: 30px;
+        height: 40px;
         width: 200px;
         position: absolute;
         top: 500px;
         left: 45px;
-        background-color: #a3d8f4;
+        background-color: #006e8c;
         box-sizing: border-box;
         margin: 10px auto;
         border-radius: .3em;
         text-decoration: none;
         font-weight: 600;
-        font-size: 18px;
-
-        border: 2px solid #204051;
+        font-size: 20px;
+        color: #ffffff;
+        border: 0px solid #204051;
     }
     
         .BotonCompararD:hover{
@@ -363,7 +363,7 @@ export default {
 
         .loadingAnimCD{
             position: absolute;
-            top: 560px;
+            top: 580px;
             left: 110px;
         }
 

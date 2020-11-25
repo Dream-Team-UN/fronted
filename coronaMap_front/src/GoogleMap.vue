@@ -14,7 +14,7 @@
     <gmap-map v-on:click="funcionPrueba"
       :center="{ lat: this.lati, lng: this.longi}"
       :zoom="this.zoomi"
-      style="width:100%;  height: 675px;"
+      style="width:100%;  height: 804px;"
     >
       <GmapCircle
     :center="{ lat: this.lati, lng: this.longi}"
