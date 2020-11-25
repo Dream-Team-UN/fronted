@@ -1,0 +1,14 @@
+Azul
+42A5F5
+
+Verde
+66BB6A
+
+Amarillo
+FFA726
+
+Morado
+A533FF
+
+Rojo
+A80028

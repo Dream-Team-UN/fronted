@@ -160,10 +160,10 @@ export default {
 					{
 						data: [100, 200, 300, 400],
 						backgroundColor: [
-                            "#42A5F5",
-                            "#66BB6A",
                             "#FFA726",
-                            "#A533FF"
+                            "#A80028",
+                            "#42A5F5",
+                            "#66BB6A"
                         ],
                         hoverBackgroundColor: [
                             "#64B5F6",
@@ -181,10 +181,10 @@ export default {
 					{
 						data: [100, 200, 300, 400],
 						backgroundColor: [
-                            "#42A5F5",
-                            "#66BB6A",
                             "#FFA726",
-                            "#A533FF"
+                            "#A80028",
+                            "#42A5F5",
+                            "#66BB6A"
                         ],
                         hoverBackgroundColor: [
                             "#64B5F6",
@@ -205,7 +205,7 @@ export default {
 					},
 					{
 						label: 'My Second dataset',
-						backgroundColor: '#FFA726',
+						backgroundColor: '#A533FF',
 						data: [28, 48, 40, 19, 86]
 					}
 				]
