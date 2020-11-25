@@ -1,6 +1,7 @@
 <template>
-    <div id="body">      
+    <div id="body">
         <div class="contenedor_izq">
+            <h1 id="filtrosTitulo">Filtros</h1>
             <div class="sqrDepartamento">
                 <h3>Filtrar por Departamento:</h3>
                 <select class="listaDep" v-on:change="refreshDataDptos($event)">
