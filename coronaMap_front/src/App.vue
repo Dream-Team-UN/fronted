@@ -2,7 +2,7 @@
   <div id="app">
     <header>
   <nav>
-    <img src="./assets/logo_b.png" alt="CornoamapTitle" style="width:135px;height:60px;">
+    <img src="./assets/logo_b.png" alt="CornoamapTitle" style="width:155px;height:60px;">
     <router-link class="menu-item" to="/">Inicio</router-link>
     <router-link class="menu-item" to="/mapa">Mapa De Infectados</router-link>
     <router-link class="menu-item" to="/comportamiento">Comportamiento COVID-19</router-link>
@@ -43,12 +43,12 @@ body{
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   /*background-image:url('./assets/BG.jpg');
   background-position:inherit*/
-  background-color: #a3d8f4;
+  background-image:url('./assets/BG1.jpg');
 }
 
 header{
   width: 100vw;
-  background-color: #7579e7;
+  background-image:linear-gradient(to bottom right,#006e8c,#20a0ff);
   padding: 15px;
 }
 
@@ -69,19 +69,20 @@ nav{
 
 nav .menu-item{
   color: #eeeeee;
-  padding: 10px 20px;
+  padding: 10px 30px;
   position: relative;
   text-align: center;
   text-decoration:none;
   border-bottom: 3px solid transparent;
   display: flex;
   transition: 0.3s;
+  font-size: 18px;
 }
 
 nav .menu-item.active,
 nav .menu-item:hover{
-  background-color: #9ab3f5;
-  border-bottom-color:#a3d8f4;
+  background-color: #9ba4b4;
+  border-bottom-color:#ffffff;
 }
 nav .menu-item a{
   color: inherit;
@@ -91,7 +92,7 @@ footer{
  position:fixed;
  bottom:0;
  width: 100%;
- background-color: #7579e7;
+ background-color: #00232b;
  padding: 15px;
 }
 footer .informacion{

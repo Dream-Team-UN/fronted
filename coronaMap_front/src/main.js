@@ -10,10 +10,12 @@ import ComparacionMun from './ComparacionMun'
 import Enlaces from './Enlaces.vue'
 import * as VueGoogleMaps from "vue2-google-maps";
 import Chart from 'primevue/chart';
+import twitter from 'vue-twitter'
 
 Vue.use(VueRouter);
 Vue.use(Carousel3d);
 Vue.use(Chart);
+Vue.use(twitter)
 
 const routes=[
   {path:'/', component: Inicio},

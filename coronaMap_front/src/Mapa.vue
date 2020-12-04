@@ -1,6 +1,5 @@
 <template>
     <div id="body">
-        <h1>Mapa</h1>
        <!--<table class="table">
                 <thead>
                     <tr>
@@ -87,6 +86,7 @@
         <div class="contenedor_centro">
             <!--<h1>Mapa</h1>-->
             <!--<div id="map"><google-map :lati="LAT" :longi="LONG" /></div>-->
+
             <div id="map"><google-map :lati="LAT" :longi="LONG" :zoomi="ZOOM"/></div>
         </div>
         <div class="contenedor_derecha" v-for="caso in casos" v-bind:key="caso.id">
@@ -229,6 +229,10 @@ export default {
             casosMun:[],//casos de Covid en un Municipio especifico
             nombreMunDpto:[],//guarda el nombre y el id de los municipios de un dpto especifico
             idMunDpto:[],
+            lat_c:[],
+            long_c:[],
+            nombre_c:[],
+            radio_c:[],
             coorMun:[],//guarda las coordenadas de todos los municipios de Colombia (onCreated)
             DATA: "data1",
             DATA1: "Departamento",
@@ -263,8 +267,55 @@ export default {
                 console.log(response.data);
                 this.coorMun = response.data;
                 //console.log(this.coorMun);
+                //this.informacionCirculos();
             });
         },
+        /*informacionCirculos(){
+            var list = {
+                'municipios' :[]
+            };
+            var info_latitud=[];
+            var info_longitud=[];
+            var info_radio=[];
+            var info_nombre=[]
+            for(var i=0;i<1065;i++){
+                info_nombre.push(this.coorMun[i].name)
+                info_latitud.push(this.coorMun[i].latitud)
+                info_longitud.push(this.coorMun[i].longitud)
+                if(this.coorMun[i].name=="Bogotá D.C."){
+                    info_radio.push(7);
+                }
+                else if(this.coorMun[i].name=="Medellin"){
+                    info_radio.push(5.5)
+                }
+                else if(this.coorMun[i].name=="Cartagena De Indias" || this.coorMun[i].name=="Cali"
+                        || this.coorMun[i].name=="Barranquilla" || this.coorMun[i].name=="Cúcuta"){
+                    info_radio.push(5)
+                }
+                else if(this.coorMun[i].name=="Ibagué" || this.coorMun[i].name=="Manizales"
+                        || this.coorMun[i].name=="Pereira" || this.coorMun[i].name=="Bucaramanga"){
+                    info_radio.push(4.5)
+                }
+                else if(this.coorMun[i].name=="Villavicencio" || this.coorMun[i].name=="Santa Marta"
+                        || this.coorMun[i].name=="Valledupar" || this.coorMun[i].name=="Montería"
+                        || this.coorMun[i].name=="Neiva" || this.coorMun[i].name=="Pasto"
+                        || this.coorMun[i].name=="Armenia"){
+                    info_radio.push(4.1)
+                }
+                else{
+                    info_radio.push(Math.random() * (2 - 4) + 2)
+                }  
+            }
+            this.lat_c=info_latitud;
+            this.long_c=info_longitud;
+            this.nombre_c=info_nombre;
+            this.radio_c=info_radio;
+            //console.log(this.lat_c);
+            //console.log(this.long_c);
+            //console.log(this.nombre_c);
+            //console.log(this.radio_c);
+            //console.log(typeof(this.lat_c));
+        },*/
     refreshDataDptos: function(event){
         var id = event.target.value;
         var value = event.target.options[event.target.options.selectedIndex].text;
@@ -408,15 +459,16 @@ export default {
 <style>
 
 .contenedor_izq{
-  height: 680px;
+  height: 812px;
   width: 300px;
   position: absolute;
-  top: 175px;
-  left: 260px;
+  top: 90px;
+  /*left: 260px;*/
   background-color: #e4e3e3;
-  border-style: solid;
+  background-image: linear-gradient(to top right, #bbe6ff, #ffffff);
+  /*border-style: solid;
   border-width: 1px;
-  border-color: #212121;
+  border-color: #212121;*/
 }
 #filtrosTitulo {
             font-size: 60px;
@@ -430,8 +482,8 @@ export default {
             height: 100px;
             width: 200px;
             position: fixed;
-            top: 400px;
-            left: 315px;
+            top: 370px;
+            left:55px;
             
         }
 .sqrMunicipio {
@@ -439,23 +491,24 @@ export default {
             width: 200px;
             position: fixed;
             top: 500px;
-            left: 315px;
+            left: 55px;
         }
 
 .BotonFiltrar {
-            height: 30px;
+            height: 40px;
             width: 200px;
             position: fixed;
-            top: 650px;
-            left: 315px;
-            background-color: #a3d8f4;
+            top: 700px;
+            left: 55px;
+            background-color: #006e8c;
             box-sizing: border-box;
             margin: 10px auto;
             border-radius: .3em;
             text-decoration: none;
             font-weight: 600;
-            font-size: 18px;
-            border: 2px solid #0a0a0a;
+            font-size: 20px;
+            color: #ffffff;
+            border: 0px solid #0a0a0a;
         }
     
   .BotonFiltrar:hover{
@@ -467,8 +520,8 @@ export default {
 
   .loadingAnim{
   position: fixed;
-  top: 750px;
-  left: 380px;
+  top: 790px;
+  left: 120px;
 }
  
     .listaDep{
@@ -511,83 +564,103 @@ export default {
         }
 .contenedor_centro{
 
-   height: 680px;
-   width: 800px;
+   height: 812px;
+   width: 1243px;
    position: absolute;
-   top: 175px;
-   left: 560px;
+   top: 90px;
+   left: 300px;
    background-color: #e4e3e3;
-  border-style: solid;
+  /*border-style: solid;
   border-width: 1px;
-  border-color: #212121;
+  border-color: #212121;*/
   
 }
 .contenedor_derecha{
-  height: 680px;
-  width: 300px;
+  height: 812px;
+  width: 336px;
   position: absolute;
-  top: 175px;
-  left: 1360px;
-  background-color: #e4e3e3;
-  border-style: solid;
+  top: 90px;
+  left: 1543px;
+  background-color: #006e8c;
+  /*border-style: solid;
   border-width: 1px;
-  border-color: #212121;
+  border-color: #212121;*/
 }
 .dataTitulo {
         
             font-size: 20px;
             text-align: center;
             position: relative;
-            top: 10px;
+            top: 15px;
             color: #204051;
         }
         .dataContent {
         
-            font-size: 50px;
+            font-size: 55px;
             text-align: center;
             position: relative;
-            top: 25px;
+            top: 23px;
             color: #204051;
         }
         .sqrConfirmados {
-            height: 120px;
-            width: 254px;
-            position: fixed;
-            top: 197px;
-            left: 1382px;
+            height: 130px;
+            width: 284px;
+            position: relative;
+            top: 26px;
+            left: 26px;
+            border-radius: 1em;
             background-color: #f2f2f2;
+            border-style: solid;
+            border-width: 5px;
+            border-color: #A533FF;
         }
         .sqrActivos {
-            height: 120px;
-            width: 254px;
-            position: fixed;
-            top: 328px;
-            left: 1382px;
+            height: 130px;
+            width: 284px;
+            position: relative;
+            top: 52px;
+            left: 26px;
+            border-radius: 1em;
             background-color: #f2f2f2;
+            border-style: solid;
+            border-width: 5px;
+            border-color: #FFA726;
         }
         .sqrRecuperados {
-            height: 120px;
-            width: 254px;
-            position: fixed;
-            top: 459px;
-            left: 1382px;
+            height: 130px;
+            width: 284px;
+            position: relative;
+            top: 78px;
+            left: 26px;
+            border-radius: 1em;
             background-color: #f2f2f2;
+            border-style: solid;
+            border-width: 5px;
+            border-color: #66BB6A;
         }
         .sqrFallecidos {
-            height: 120px;
-            width: 254px;
-            position: fixed;
-            top: 590px;
-            left: 1382px;
+            height: 130px;
+            width: 284px;
+            position: relative;
+            top: 104px;
+            left: 26px;
+            border-radius: 1em;
             background-color: #f2f2f2;
+            border-style: solid;
+            border-width: 5px;
+            border-color: #A80028;
         }
         .sqrAsintomaticos {
-            height: 120px;
-            width: 254px;
-            position: fixed;
-            top: 721px;
-            left: 1382px;
+            height: 130px;
+            width: 284px;
+            position: relative;
+            top: 130px;
+            left: 26px;
+            border-radius: 1em;
             background-color: #f2f2f2;
+            border-style: solid;
+            border-width: 5px;
+            border-color: #42A5F5;
         }
 
 

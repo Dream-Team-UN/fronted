@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1>Inicio</h1>
-        <carousel-3d :width="600" :height="500">
+        
+        <carousel-3d :width="550" :height="450">
             <slide :index="0">
             Slide 1 Content
             </slide>
@@ -18,6 +18,20 @@
             Slide 5 Content
             </slide>
             </carousel-3d>
+
+            <div class="info_especial">
+            <twitter class="izq">
+                <a class="twitter-timeline" margin-left="200px" data-lang="es" data-width="400" data-height="300" data-theme="dark" href="https://twitter.com/MinSaludCol?ref_src=twsrc%5Etfw">Tweets by MinSaludCol</a>
+            </twitter>
+
+
+            <iframe class="center" width="450" height="300" src="https://www.youtube.com/embed/kuntYu48pkw" frameborder="0"
+                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>            
+            <img class="der" src="./assets/c.jpg">
+            </div>
+            
+            
+            
     </div>
 </template>
 
@@ -43,7 +57,7 @@ components: {
 }
 
 .carousel-3d-container{
-top: 50px;
+top: 0px;
 
 }
 
@@ -51,6 +65,35 @@ top: 50px;
     color: black;
     background-color: white;
     
+}
+
+.twitter-timeline{
+    margin-left: 0px;
+}
+.info_especial{
+    
+    height: 300px;
+    
+    margin-left: 210px;
+    margin-right: 210px;
+}
+
+div .izq{
+  width: 33%;
+  float: left;
+}
+
+div .center{
+  width: 33%;
+  
+}
+div .der{
+  width: 25%;
+  float: right;
+  height: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #212121;
 }
 
 </style>

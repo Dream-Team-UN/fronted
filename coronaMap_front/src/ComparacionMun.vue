@@ -160,16 +160,16 @@ export default {
 					{
 						data: [100, 200, 300, 400],
 						backgroundColor: [
-                            "#42A5F5",
-                            "#66BB6A",
-                            "#FFA726",
-                            "#A533FF"
+                            "#CEC60D",
+                            "#E71623",
+                            "#D35C13",
+                            "#308637"
                         ],
                         hoverBackgroundColor: [
-                            "#64B5F6",
-                            "#81C784",
-                            "#FFB74D",
-                            "#CB9EEE"
+                            "#F6F05C",
+                            "#ED5B65",
+                            "#F1934E",
+                            "#4EE35B"
                         ]
 					}
 				]
@@ -181,16 +181,16 @@ export default {
 					{
 						data: [100, 200, 300, 400],
 						backgroundColor: [
-                            "#42A5F5",
-                            "#66BB6A",
-                            "#FFA726",
-                            "#A533FF"
+                            "#CEC60D",
+                            "#E71623",
+                            "#D35C13",
+                            "#308637"
                         ],
                         hoverBackgroundColor: [
-                            "#64B5F6",
-                            "#81C784",
-                            "#FFB74D",
-                            "#CB9EEE"
+                            "#F6F05C",
+                            "#ED5B65",
+                            "#F1934E",
+                            "#4EE35B"
                         ]
 					}
 				]
@@ -199,12 +199,12 @@ export default {
 				labels: ['Casos Activos','Casos Fallecidos','Casos Asintomaticos','casos Recuperados','casos Totales'],
 				datasets: [
 					{
-						label: 'My First dataset',
+						label: 'Municipio 1',
 						backgroundColor: '#42A5F5',
 						data: [65, 59, 80, 81, 56]
 					},
 					{
-						label: 'My Second dataset',
+						label: 'Municipio 2',
 						backgroundColor: '#FFA726',
 						data: [28, 48, 40, 19, 86]
 					}
