@@ -53,12 +53,13 @@ created(){
 .comparacionContainer{
     height:680px;
     width: 1800px;
-    background-color: #e4e3e3;
+    background-color: #000000;
     margin-left: 40px;
     margin-top: 15px;
     border-style: solid;
     border-width: 0px;
     border-color: #e4e3e3;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }
 #filtroComparacion{
     font-size: 18px;

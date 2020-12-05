@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="filtroAD">
-            <h1 id="filtrosTituloCD">Municipio 1</h1>
+            <h1 id="filtrosTituloCD">Departamento 1</h1>
             <div class="sqrDepartamentoCD">
                 <h3>Departamento:</h3>
                 <select class="listaDepCD" v-on:change="refreshDataDptosCD1($event)">
@@ -64,7 +64,7 @@
         </div>
         
         <div class="filtroBD">
-            <h1 id="filtrosTituloCD">Municipio 2</h1>
+            <h1 id="filtrosTituloCD">Departamento 2</h1>
             <div class="sqrDepartamentoCD">
                 <h3>Departamento:</h3>
                 <select class="listaDepCD" v-on:change="refreshDataDptosCD2($event)">
@@ -273,27 +273,29 @@ export default {
 </script>
 
 <style>
-.filtroAD{
+
+    .filtroAD{
         height: 680px;
         width: 300px;
         position: absolute;
-        top: 190px;
+        top: 195px;
         left: 40px;
-        background-color: #ffffff;
+        font-size: 20px;
+        background-image: linear-gradient(to top right, #bbe6ff, #ffffff);
         border-style: solid;
-        border-width: 2px;
+        border-width: 0px;
         border-color: #e4e3e3;
     }
 
 .estadisticasCD{
         height: 680px;
         width: 1200px;
-        top: 190px;
+        top: 195px;
         left: 340px;
         position: absolute;
         background-color: #ffffff;
         border-style: solid;
-        border-width: 2px;
+        border-width: 0px;
         border-color: #e4e3e3;
     }
     .circular1D{
@@ -324,7 +326,7 @@ export default {
       
     }
     #filtrosTituloCD {
-        font-size: 50px;
+        font-size: 35px;
         text-align: center;
         position: relative;
         top: 70px;
@@ -410,11 +412,11 @@ export default {
         height: 680px;
         width: 300px;
         position: absolute;
-        top: 190px;
+        top: 195px;
         left: 1540px;
-        background-color: #ffffff;
+        background-image: linear-gradient(to top left, #bbe6ff, #ffffff);
         border-style: solid;
-        border-width: 2px;
+        border-width: 0px;
         border-color: #e4e3e3;
     }
 

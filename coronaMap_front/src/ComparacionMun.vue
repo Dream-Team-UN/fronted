@@ -416,27 +416,28 @@ export default {
 </script>
 
 <style>
-.filtroA{
+
+    .filtroA{
         height: 680px;
         width: 300px;
         position: absolute;
-        top: 190px;
+        top: 195px;
         left: 40px;
-        background-color: #ffffff;
+        background-image: linear-gradient(to top right, #bbe6ff, #ffffff);
         border-style: solid;
-        border-width: 2px;
+        border-width: 0px;
         border-color: #e4e3e3;
     }
+
     .estadisticasC{
         height: 680px;
         width: 1200px;
-        top: 190px;
+        top: 195px;
         left: 340px;
         position: absolute;
         background-color: #ffffff;
         border-style: solid;
-        border-width: 2px;
-        border-color: #e4e3e3;
+        border-width: 0px;
     }
     .circular1{
         height: 340px;
@@ -465,18 +466,19 @@ export default {
         background-color: #ffffff;
       
     }
-#filtrosTituloC {
+    #filtrosTituloC {
         font-size: 50px;
         text-align: center;
         position: relative;
         top: 70px;
         color: #204051;
     }
-.sqrDepartamentoC {
+
+    .sqrDepartamentoC {
         height: 100px;
         width: 200px;
         position: absolute;
-        top: 200px;
+        top: 195px;
         left: 45px;
     }
 
@@ -519,26 +521,26 @@ export default {
         }
 
         .listaDepC{
-        display: block;
-        height: 30px;
-        width: 200px;
-        top: 500px;
-        left: 315px;
-        box-sizing: border-box;
-        margin: 10px auto;
-        border: 1px solid #aaa;
-        box-shadow: 0 1px 0 1px rgba(0,0,0,.03);
-        border-radius: .3em;
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        appearance: none;
-        background-color: #fff;
-        background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
-        linear-gradient(to bottom, #ffffff 0%,#f7f7f7 100%);
-        background-repeat: no-repeat, repeat;
-        background-position: right .7em top 50%, 0 0;
-        background-size: .65em auto, 100%;
-    }
+            display: block;
+            height: 30px;
+            width: 200px;
+            top: 500px;
+            left: 315px;
+            box-sizing: border-box;
+            margin: 10px auto;
+            border: 1px solid #aaa;
+            box-shadow: 0 1px 0 1px rgba(0,0,0,.03);
+            border-radius: .3em;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: #fff;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+            linear-gradient(to bottom, #ffffff 0%,#f7f7f7 100%);
+            background-repeat: no-repeat, repeat;
+            background-position: right .7em top 50%, 0 0;
+            background-size: .65em auto, 100%;
+        }
 
         .listaDepC::-ms-expand {
             display: none;
@@ -561,11 +563,11 @@ export default {
         height: 680px;
         width: 300px;
         position: absolute;
-        top: 190px;
+        top: 195px;
         left: 1540px;
-        background-color: #ffffff;
+        background-image: linear-gradient(to top left, #bbe6ff, #ffffff);
         border-style: solid;
-        border-width: 2px;
-        border-color: #e4e3e3;
+        border-width: 0px;
     }
+
 </style>

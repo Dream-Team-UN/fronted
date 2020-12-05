@@ -397,7 +397,6 @@ export default {
   width: 300px;
   position: absolute;
   top: 85px;
-  background-color: #ffffff;
   background-image: linear-gradient(to top right, #bbe6ff, #ffffff);
   /*border-style: solid;
   border-width: 2px;
