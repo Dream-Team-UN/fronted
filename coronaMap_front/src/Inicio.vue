@@ -47,7 +47,7 @@
               <h1 class="titulo-slide">Realiza Comparaciones</h1>
               <br>
               <p class="parrafo-slide">Realiza comparaciones de casos de Coronavirus entre Municipios o entre departamentos y contrasta la información
-                para conocer que territorios se encuentran en mejor o peor estao.
+                para conocer que territorios se encuentran en mejor o peor estado.
               </p>
               <br>
               <br>
@@ -74,7 +74,7 @@
             </twitter>
 
 
-            <iframe class="center" width="450" height="300" src="https://www.youtube.com/embed/kuntYu48pkw" frameborder="0"
+            <iframe class="center" width="450" height="300" src="https://www.youtube.com/embed/cQTbdOxfqow" frameborder="0"
                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>            
             <img class="der" src="./assets/c.jpg">
             </div>
