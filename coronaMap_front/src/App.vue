@@ -16,7 +16,7 @@
   </div>
   <div class="social">
     <a href="#" class="soporte">Contact Us</a>
-    <a href="#" class="github">Github</a>
+    <a href="https://github.com/Dream-Team-UN" target="_blank" class="github">Github</a>
   </div>
   </footer>
   </div>
@@ -81,7 +81,7 @@ nav .menu-item{
 
 nav .menu-item.active,
 nav .menu-item:hover{
-  background-color: #9ba4b4;
+  background-color: #00232b;
   border-bottom-color:#ffffff;
 }
 nav .menu-item a{

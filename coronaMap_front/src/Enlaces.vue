@@ -7,23 +7,20 @@
             <div class="card">
                 <img src="./assets/enlace1.jpg">
                 <h4>línea de Atención</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                     vel, excepturi unde</p>
+                    <p>Encuentra la línea de atención ubicada en tu región de interes</p>
                      <a href="https://coronaviruscolombia.gov.co/Covid19/lineas-de-atencion.html" target="_blank">Leer mas</a>
             </div>
             <div class="card2">
                 <img src="./assets/enlace2.jpg">
                 <h4>Protocolos de Bioseguridad</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                     vel, excepturi unde</p>
-                     <a href="#">Leer mas</a>
+                    <p>Encuentra los protocolos de bioseguridad establecidos para los distintos sectores del país</p>
+                     <a href="https://www.minsalud.gov.co/salud/publica/PET/Paginas/Documentos-Administrativos-covid-19.aspx" target="_blank">Leer mas</a>
             </div>
             <div class="card3">
                 <img src="./assets/enlace3.jpg">
                 <h4>Noticias Falsas</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                     vel, excepturi unde</p>
-                     <a href="#">Leer mas</a>
+                    <p>El Gobierno cuenta con una plataforma para detectar noticias falsas. No te dejes engañar</p>
+                     <a href="https://coronaviruscolombia.gov.co/Covid19/noticias-falsas.html" target="_blank">Leer mas</a>
             </div>
         </div>
     </div>

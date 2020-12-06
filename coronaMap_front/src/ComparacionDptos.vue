@@ -273,15 +273,16 @@ export default {
 </script>
 
 <style>
-.filtroAD{
+ .filtroAD{
         height: 680px;
         width: 300px;
         position: absolute;
         top: 190px;
         left: 40px;
-        background-color: #ffffff;
+        font-size: 20px;
+        background-image: linear-gradient(to top right, #bbe6ff, #ffffff);
         border-style: solid;
-        border-width: 2px;
+        border-width: 0px;
         border-color: #e4e3e3;
     }
 
@@ -293,7 +294,7 @@ export default {
         position: absolute;
         background-color: #ffffff;
         border-style: solid;
-        border-width: 2px;
+        border-width: 0px;
         border-color: #e4e3e3;
     }
     .circular1D{
@@ -324,7 +325,7 @@ export default {
       
     }
     #filtrosTituloCD {
-        font-size: 40px;
+        font-size: 35px;
         text-align: center;
         position: relative;
         top: 70px;
@@ -338,20 +339,20 @@ export default {
         left: 45px;
     }
     .BotonCompararD {
-        height: 30px;
+        height: 40px;
         width: 200px;
         position: absolute;
         top: 500px;
         left: 45px;
-        background-color: #a3d8f4;
+        background-color: #006e8c;
         box-sizing: border-box;
         margin: 10px auto;
         border-radius: .3em;
         text-decoration: none;
         font-weight: 600;
-        font-size: 18px;
-
-        border: 2px solid #204051;
+        font-size: 20px;
+        color: #ffffff;
+        border: 0px solid #204051;
     }
     
         .BotonCompararD:hover{
@@ -363,7 +364,7 @@ export default {
 
         .loadingAnimCD{
             position: absolute;
-            top: 560px;
+            top: 580px;
             left: 110px;
         }
 
@@ -412,9 +413,9 @@ export default {
         position: absolute;
         top: 190px;
         left: 1540px;
-        background-color: #ffffff;
+        background-image: linear-gradient(to top left, #bbe6ff, #ffffff);
         border-style: solid;
-        border-width: 2px;
+        border-width: 0px;
         border-color: #e4e3e3;
     }
 
